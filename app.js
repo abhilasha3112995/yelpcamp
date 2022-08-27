@@ -29,37 +29,37 @@ const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 
 
 
-// mongoose.connect(dbUrl,{
-//     useNewUrlParser: true,   
-//     useUnifiedTopology: true,
-//     useUnifiedTopology: true,
-// })
+mongoose.connect(dbUrl,{
+    useNewUrlParser: true,   
+    useUnifiedTopology: true,
+    
+})
 
-// const db = mongoose.connection;
-// db.on("error", console.error.bind(console, "connection error"));
-// db.once("open", () => {
-//     console.log("Database connected");
-// })
-
-
-// const url = process.env.port;
-    mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: 
-    true });
-
-    const connection = mongoose.connection;
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error"));
+db.once("open", () => {
+    console.log("Database connected");
+})
 
 
-    try{
-    connection.once('open', () => {
-        console.log("MongoDB database connection established successfully");
-    })
-    } catch(e) {
-    console.log(e);
-    }
+// // const url = process.env.port;
+//     mongoose.connect(dbUrl, { useNewUrlParser: true, useUnifiedTopology: 
+//     true });
 
-   function close_connection() {
-    connection.close();
-   }
+//     const connection = mongoose.connection;
+
+
+//     try{
+//     connection.once('open', () => {
+//         console.log("MongoDB database connection established successfully");
+//     })
+//     } catch(e) {
+//     console.log(e);
+//     }
+
+//    function close_connection() {
+//     connection.close();
+//    }
 
 
 
