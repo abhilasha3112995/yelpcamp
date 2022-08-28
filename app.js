@@ -22,7 +22,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
-const MongoDBStore = require("connect-mongo");
+// const MongoDBStore = require("connect-mongo");
 const MongoStore = require('connect-mongo');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
@@ -76,11 +76,12 @@ app.use(express.static(path.join(__dirname,'public')));
 app.use(mongoSanitize({
     replaceWith: '_'
 }))
+// app.use(helmet.crossOriginEmbedderPolicy({ policy: "credentialless" }));
 
 
 const secret = process.env.SECRET || 'thisshouldbeabettersecret';
 
-const store = new MongoDBStore({
+const store = MongoStore.create({
     mongoUrl: dbUrl,
     secret,
     touchAfter: 24 * 60 * 60

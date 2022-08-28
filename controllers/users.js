@@ -2,6 +2,9 @@ const User = require('../models/user');
 
 
 module.exports.renderRegister = (req, res) => {
+    if(req.query.returnTo){
+        req.session.returnTo = req.query.reurnTo;
+    }
     res.render("users/register");
 }
 
@@ -29,20 +32,19 @@ module.exports.renderLogin = (req, res) => {
 
 module.exports.login = (req, res) => {
     req.flash('success', ' welcome back!!');
-    const redirectUrl = req.session.returnTo || '/campgrounds';
-    delete req.session.returnTo
+    const redirectUrl = res.locals.returnTo || '/campgrounds';
     res.redirect(redirectUrl);
    
 }
 
 
 module.exports.logout = (req, res, next) => {
-    req.logout(function (err) {
-      if (err) {
-        return next(err);
-      }
-      // if you're using express-flash
+    req.logout( () => {
+           // if you're using express-flash
       req.flash('success', 'Goodbye!!!!!');
       res.redirect('/campgrounds');
-    });
-  }
+      
+      }
+   
+   )};
+  
