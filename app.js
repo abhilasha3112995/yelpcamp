@@ -22,6 +22,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const userRoutes = require('./routes/users');
 const campgroundRoutes = require('./routes/campgrounds');
 const reviewRoutes = require('./routes/reviews');
+
 const MongoStore = require('connect-mongo');
 
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
@@ -78,7 +79,7 @@ app.use(mongoSanitize({
 // app.use(helmet.crossOriginEmbedderPolicy({ policy: "credentialless" }));
 
 
-const secret = process.env.SECRET || 'tj_jM8gvtZ-2JhdXYIpCSsCry0zA';
+const secret = process.env.SECRET || 'thisshouldbeabettersecret';
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
