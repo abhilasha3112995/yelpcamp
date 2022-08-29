@@ -1,8 +1,14 @@
 <% layout('layouts/boilerplate')%>
 <link rel="stylesheet" href="/stylesheets/stars.css">
+
+
+
 <div class="row">
     <div class="col-6">
-      <div id="map"></div>
+      <div id="showpage-map"></div>
+    
+
+
         <div id="campgroundCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <% campground.images.forEach((img, i) => {  %>
@@ -82,7 +88,7 @@
             <button class="btn btn-success">Submit</button>
         </form>
         <% } else { %>
-            <a href="/login?returnTo=/campgrounds/<%= campground._id %> class="btn btn-sm btn-danger">Leave a Review</a>
+            <a href="/login?returnTo=/campgrounds/<%= campground._id %>" class="btn btn-lg btn-primary"> Leave a Review</a>
 
 
             <% } %> 
@@ -117,6 +123,3 @@
 
 
 
-
-
-    
